@@ -9,7 +9,7 @@
 $(function() {
     // on submitting the form 
     $('#form-registration').on('submit', function(e) {
-
+        $('#ErrorMessage').empty();
         // creating the error div using jquery
     var $errordiv = $('<div id="ErrorMessage" style="display: none;"></div>');
     // adding the div before the form
@@ -62,12 +62,13 @@ $(function() {
             // showing the error div with the error messages
             $('#ErrorMessage').html(Message.join('<br>')).show();
         } else {
+            $('#ErrorMessage').hide();
             // otherwise creating the user instance
             var username=lName+fName[0];
             var user = new User(fName, lName, username, email, password);
             console.log(user);
             $(this).find('input[type="text"], input[type="password"]').val('');
-            $('#ErrorMessage').hide();
+            
         }
     })
     
